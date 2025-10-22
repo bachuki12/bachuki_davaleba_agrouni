@@ -13,7 +13,7 @@ i =2
 
 ricxvi = int(input("შემოიტანე რაიმე ნატურარული რიცხვი (1-100): "))
 
-while  ricxvi<0 or ricxvi>100:
+while  ricxvi<=0 or ricxvi>100:
     ricxvi = int(input("რიცხვი უნდა იყოს დადებითი და 1-100 შუალედში სცადეთ თავიდან: "))
 
 #კოდის  ეს ნაწილი უშვალოდ ითვლის ფიბონაჩის რიცხვებს
@@ -22,10 +22,8 @@ while i<ricxvi:
     i+=1
 
 match ricxvi:
-    case 0:
-        print("0 წევრისგან შემდარი ფიბონჩის რიცხვია", ricxvi)
     case 1:
-        print("1 წევრისგან შემდარი ფიბონჩის რიცხვია", ricxvi)
+        print("1 წევრისგან შემდარი ფიბონჩის რიცხვია",list_for_fibonaci[0])
     case _:
         print(ricxvi, "წევრისაგან შემდგარი ფიბონაჩის რიცხვების სიაა ", *list_for_fibonaci)
 
