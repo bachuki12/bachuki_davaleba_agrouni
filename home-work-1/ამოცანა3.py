@@ -21,10 +21,9 @@ while i<ricxvi:
     list_for_fibonaci.append(list_for_fibonaci[i-2] + list_for_fibonaci[i-1])
     i+=1
 
-match ricxvi:
-    case 1:
+if ricxvi==1:
         print("1 წევრისგან შემდარი ფიბონჩის რიცხვია",list_for_fibonaci[0])
-    case _:
+else:
         print(ricxvi, "წევრისაგან შემდგარი ფიბონაჩის რიცხვების სიაა ", *list_for_fibonaci)
 
 
