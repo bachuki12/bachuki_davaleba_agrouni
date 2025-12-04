@@ -1,26 +1,48 @@
+'''
+მოცემულია წინადადება:
+sentence = "Data Science is fun and Data Analysis is powerful if data is understood well."
+1) შექმენით სია რომლის წევრებიც იქნება წინადადების სიტყვები.
+2) map + lambda-ს გამოყენებით გადაწერეთ ზევით შექმნილი სიის წევრები პატარა ასოებით.
+3) functools.reduce +lambda-ს გამოყენებით შექმენით ლექსიკონი {word: count}
+რომლის გასაღებებიც იქნება სიტყვები და მნიშვნელობები იქნება მათი რაოდენობა წინადადებაში.
+4) max(…, key = ...)-ს გამოყენებით იპოვეთ ყველაზე ხშირად გამეორებული სიტყვა.
+5) filter + lambda-ს გამოყენებით დატოვეთ სიტყვები რომლებიც შეიცავს 3-ზე მეტ ასოს.
+
+'''
+
 from functools import reduce
 
-#1) წინადადება და სიტყვების სია
 sentence = "Data Science is fun and Data Analysis is powerful if data is understood well."
-words = sentence.split()  # სიტყვების სია
-print("Step 1:", words)
 
-# 2) map + lambda -> ყველა სიტყვას ჩავწერთ პატარა ასოებში
-lower_words = list(map(lambda w: w.lower(), words))
-print("Step 2:", lower_words)
+split_sentence = sentence.split()
+'''
+2) map + lambda-ს გამოყენებით გადაწერეთ ზევით შექმნილი სიის წევრები პატარა ასოებით.
+'''
 
-# 3) reduce + lambda -> სიტყვების რაოდენობის ლექსიკონი
-word_counts = reduce(
-    lambda acc, w: {**acc, w: acc.get(w, 0) + 1},
-    lower_words,
-    {}
-)
-print("Step 3:", word_counts)
+list_of_little_words = list(map(lambda x: x.lower(), split_sentence))
+print(list_of_little_words)
 
-#4) max(..., key=...) -> ყველაზე ხშირად განმეორებული სიტყვა
-most_common_word = max(word_counts, key=lambda k: word_counts[k])
-print("Step 4:", most_common_word, "appears", word_counts[most_common_word], "times")
+# p = ['data', 'science', 'is', 'fun', 'and', 'data', 'analysis', 'is', 'powerful', 'if', 'data', 'is', 'understood', 'well.']
 
-# 5) filter + lambda -> დატოვეთ სიტყვები რომლებიც შეიცავს 3-ზე მეტ ასოს
-long_words = list(filter(lambda w: len(w) > 3, lower_words))
-print("Step 5:", long_words)
+'''
+3) functools.reduce +lambda-ს გამოყენებით შექმენით ლექსიკონი {word: count} 
+რომლის გასაღებებიც იქნება სიტყვები და მნიშვნელობები იქნება მათი რაოდენობა წინადადებაში.
+'''
+my_dict = {}
+for word in list_of_little_words:
+    my_dict.update(reduce(lambda x, y: ({word: list_of_little_words.count(word)}),list_of_little_words))
+
+print(my_dict)
+
+'''
+4) max(…, key = ...)-ს გამოყენებით იპოვეთ ყველაზე ხშირად გამეორებული სიტყვა.
+'''
+most_common_word = max(my_dict, key=lambda k: my_dict[k])
+print(f"{most_common_word.capitalize()} --> appears {my_dict[most_common_word]} times")
+
+'''
+5) filter + lambda-ს გამოყენებით დატოვეთ სიტყვები რომლებიც შეიცავს 3-ზე მეტ ასოს.
+'''
+
+more_than_3_symbols = list(filter(lambda x: len(x)>3, my_dict))
+print(more_than_3_symbols)
