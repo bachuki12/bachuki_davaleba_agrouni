@@ -36,8 +36,6 @@ while(True):
             break
         else:
             print("Input values Out of range")
-            a = str(a)
-            b = str(b)
             a = input("Enter correct number1: ")
             b = input("Enter correct number2: ")
     else:
