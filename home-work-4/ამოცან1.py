@@ -9,7 +9,6 @@
 def simple_or_complex(num):
     c =0
     for i in range(1, num+1):
-        print(num % i)
         if num % i == 0:
             c+=1
     if c == 2:
