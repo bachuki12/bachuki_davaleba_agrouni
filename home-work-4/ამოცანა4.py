@@ -20,7 +20,6 @@ def bubbleSort(masiv1, masiv2, one = False):
     n = len(arr)
     # Traverse through all array elements
     for i in range(n):
-        swapped = False
         # Last i elements are already in place
         for j in range(0, n - i - 1):
 
@@ -29,9 +28,6 @@ def bubbleSort(masiv1, masiv2, one = False):
             # than the next element
             if arr[j] > arr[j + 1]:
                 arr[j], arr[j + 1] = arr[j + 1], arr[j]
-                swapped = True
-        if (swapped == False):
-            break
     if one == True:
         arr.reverse()
     print("Sorted array:")
@@ -39,7 +35,7 @@ def bubbleSort(masiv1, masiv2, one = False):
 
 # Driver code to test above
 if __name__ == "__main__":
-    masiv1 = [1, 3, 10]
+    masiv1 = [1, 3, -787]
     masiv2 = [0, 4, 7, 9]
 
     bubbleSort(masiv1, masiv2)
